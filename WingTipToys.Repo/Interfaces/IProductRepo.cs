@@ -9,7 +9,7 @@ namespace WingTipToys.Repo.Interfaces
 {
     public interface IProductRepo : IRepo<Product>
     {
-        public List<Product> ReadAllCars();
+        public List<Product> GetProductByType(int categroyId);
 
     }
 }

@@ -17,21 +17,16 @@ namespace WingTipToys.BusinessLogic.Business
         private new readonly IProductRepo _repo;
         private new readonly IMapper _mapConfig;
 
-        public ProductLogic(IProductRepo repo) : base(repo)
+        public ProductLogic(IProductRepo repo, IMapper mapConfig ) : base(repo, mapConfig)
         {
             _repo = repo;
-            _mapConfig = new MapperConfiguration(
-                cfg =>
-                {
-                    cfg.CreateMap<Product, ProductDTO>();
-                    cfg.CreateMap<ProductDTO, Product>();
-                }).CreateMapper();
+            _mapConfig = mapConfig;
         }
 
-        public List<ProductDTO> GetCarsFromProduct()
+        public List<ProductDTO> GetProductByType(int categoryId)
         {
 
-            var cars = _repo.ReadAllCars().ToList<Product>();
+            var cars = _repo.GetProductByType(categoryId).ToList<Product>();
             return _mapConfig.Map<List<Product>, List<ProductDTO>>(cars);
             
         }

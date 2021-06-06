@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using WingTipToys.BusinessLogic;
 using WingTipToys.BusinessLogic.Business;
 using WingTipToys.BusinessLogic.Interfaces;
+using WingTipToys.DTO;
+using WingTipToys.Entities;
 using WingTipToys.Repo.Interfaces;
 using WingTipToys.Repo.Models;
 
@@ -29,9 +32,10 @@ namespace WingTipToysWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            services.AddAutoMapper(typeof(MappingConfig));
+
             services.AddScoped<IProductLogic, ProductLogic>();
-            //services.AddAutoMapper(typeof(BaseLogic<,>));
-            //services.AddAutoMapper(typeof(ProductLogic));
             services.AddScoped(typeof(IRepo<>), typeof(BaseRepo<>));
             services.AddScoped<IProductRepo, ProductRepo>();
 

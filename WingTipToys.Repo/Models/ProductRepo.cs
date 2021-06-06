@@ -18,9 +18,9 @@ namespace WingTipToys.Repo.Models
         {
             _context = context;
         }
-        public List<Product> ReadAllCars()
+        public List<Product> GetProductByType(int categroyId)
         {
-            return _context.Products.Where(p => p.CategoryId == 1).ToList<Product>();
+            return _context.Products.Where(p => p.CategoryId == categroyId).ToList<Product>();
             
         }
 

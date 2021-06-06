@@ -14,18 +14,13 @@ namespace WingTipToys.BusinessLogic.Business
 
         public BaseLogic()
         {
-           
+
         }
 
-        public BaseLogic(IRepo<TEntity> repo)
+        public BaseLogic(IRepo<TEntity> repo, IMapper mapConfig)
         {
             _repo = repo;
-            _mapConfig  = new MapperConfiguration(
-                cfg =>
-                {
-                    cfg.CreateMap<TEntity, TDTO>();
-                    cfg.CreateMap<TDTO, TEntity>();
-                }).CreateMapper();
+            _mapConfig  = mapConfig;
         }
 
         public void Create(TDTO item)

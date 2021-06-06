@@ -12,6 +12,7 @@ namespace WingTipToys.Repo.Models
     {
         private WingTipToysContext _context;
         private DbSet<TEntity> _dbSet;
+
         public BaseRepo(WingTipToysContext context)
         {
             _context = context;
