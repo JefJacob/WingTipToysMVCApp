@@ -9,6 +9,6 @@ namespace WingTipToys.BusinessLogic.Interfaces
 {
     public interface IProductLogic
     {
-        public List<ProductDTO> GetCarsFromProduct();
+        public List<ProductDTO> GetProductByType(int categoryId);
     }
 }

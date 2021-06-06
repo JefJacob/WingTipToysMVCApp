@@ -24,8 +24,8 @@ namespace WingTipToysWebApp.Controllers
         
         public IActionResult Index()
         {
-            
-            return View(_logic.GetCarsFromProduct());
+            int categoryId = 1;//for car
+            return View(_logic.GetProductByType(categoryId));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

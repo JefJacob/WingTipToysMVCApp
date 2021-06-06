@@ -28,17 +28,7 @@ namespace WingTipToys.Repo.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                .AddJsonFile("appsettings.json")
-                .Build();
-            
-            if (!optionsBuilder.IsConfigured)
-            {
-                
 
-                optionsBuilder.UseSqlServer(configuration.GetConnectionString("WingTipToys"));
-            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

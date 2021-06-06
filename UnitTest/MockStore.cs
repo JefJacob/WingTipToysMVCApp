@@ -16,9 +16,8 @@ namespace UnitTest
         {
             
             var mock = new Mock<IProductLogic>();
-
-            // void GetCarsFromProduct();
-            mock.Setup(x => x.GetCarsFromProduct())
+            // void GetProductByType(int categoryId);
+            mock.Setup(x => x.GetProductByType(It.IsAny<int>()))
                 .Returns(GetCarsMock());
 
              return mock;
