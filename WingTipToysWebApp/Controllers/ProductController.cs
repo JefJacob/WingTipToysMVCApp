@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WingTipToys.BusinessLogic;
+using WingTipToys.BusinessLogic.Interfaces;
 using WingTipToys.DTO;
 using WingTipToys.Entities;
 using WingTipToysWebApp.Models;
@@ -15,7 +16,6 @@ namespace WingTipToysWebApp.Controllers
     public class ProductController : Controller
     {
         private readonly IProductLogic _logic;
-        private readonly BaseLogic<Product, ProductDTO> _baseLogic;
         public ProductController(IProductLogic logic)
         {
             _logic = logic;

@@ -14,9 +14,9 @@ namespace WingTipToys.Repo.Models
         private WingTipToysContext _context;
         
 
-        public ProductRepo()
+        public ProductRepo(WingTipToysContext context) : base(context)
         {
-            _context = new WingTipToysContext();
+            _context = context;
         }
         public List<Product> ReadAllCars()
         {

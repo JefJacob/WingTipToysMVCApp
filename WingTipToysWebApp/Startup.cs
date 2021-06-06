@@ -5,10 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WingTipToys.BusinessLogic;
+using WingTipToys.BusinessLogic.Business;
+using WingTipToys.BusinessLogic.Interfaces;
+using WingTipToys.Repo.Interfaces;
+using WingTipToys.Repo.Models;
 
 namespace WingTipToysWebApp
 {
@@ -24,7 +29,13 @@ namespace WingTipToysWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IProductLogic, ProductLogic>();
+            services.AddScoped<IProductLogic, ProductLogic>();
+            //services.AddAutoMapper(typeof(BaseLogic<,>));
+            //services.AddAutoMapper(typeof(ProductLogic));
+            services.AddScoped(typeof(IRepo<>), typeof(BaseRepo<>));
+            services.AddScoped<IProductRepo, ProductRepo>();
+
+            services.AddDbContext<WingTipToysContext>(options => options.UseSqlServer(Configuration.GetConnectionString("WingTipToys")));
             services.AddControllersWithViews();
         }
 

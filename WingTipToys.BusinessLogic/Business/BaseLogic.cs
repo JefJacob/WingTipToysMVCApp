@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using System;
+using WingTipToys.BusinessLogic.Interfaces;
 using WingTipToys.Entities;
 using WingTipToys.Repo.Interfaces;
 using WingTipToys.Repo.Models;
 
-namespace WingTipToys.BusinessLogic
+namespace WingTipToys.BusinessLogic.Business
 {
     public class BaseLogic<TEntity, TDTO> : ILogic<TDTO> where TEntity : class, IEntity
     {
@@ -13,13 +14,18 @@ namespace WingTipToys.BusinessLogic
 
         public BaseLogic()
         {
-            _mapConfig = new MapperConfiguration(
+           
+        }
+
+        public BaseLogic(IRepo<TEntity> repo)
+        {
+            _repo = repo;
+            _mapConfig  = new MapperConfiguration(
                 cfg =>
                 {
                     cfg.CreateMap<TEntity, TDTO>();
                     cfg.CreateMap<TDTO, TEntity>();
                 }).CreateMapper();
-            _repo = new BaseRepo<TEntity>();
         }
 
         public void Create(TDTO item)
