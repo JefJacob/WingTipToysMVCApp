@@ -12,9 +12,9 @@ namespace WingTipToys.Repo.Models
     public class OrderDetailRepo : BaseRepo<OrderDetail>, IOrderDetailRepo
     {
         private WingTipToysContext _context;
-        public OrderDetailRepo()
+        public OrderDetailRepo(WingTipToysContext context) : base(context)
         {
-            _context = new WingTipToysContext();
+            _context = context;
         }
     }
 }

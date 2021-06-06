@@ -12,9 +12,9 @@ namespace WingTipToys.Repo.Models
     public class CartItemRepo : BaseRepo<CartItem>, ICartItemRepo
     {
         private WingTipToysContext _context;
-        public CartItemRepo()
+        public CartItemRepo(WingTipToysContext context):base(context)
         {
-            _context = new WingTipToysContext();
+            _context = context;
         }
     }
 }

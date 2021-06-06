@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WingTipToys.DTO;
 
-namespace WingTipToys.BusinessLogic
+namespace WingTipToys.BusinessLogic.Interfaces
 {
     public interface IProductLogic
     {

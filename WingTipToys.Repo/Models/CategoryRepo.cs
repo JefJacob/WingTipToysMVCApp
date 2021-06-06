@@ -12,9 +12,9 @@ namespace WingTipToys.Repo.Models
     public class CategoryRepo : BaseRepo<Category>, ICategoryRepo
     {
         private WingTipToysContext _context;
-        public CategoryRepo()
+        public CategoryRepo(WingTipToysContext context) : base(context)
         {
-            _context = new WingTipToysContext();
+            _context = context;
         }
     }
 }
